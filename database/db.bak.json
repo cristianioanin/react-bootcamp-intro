@@ -1,0 +1,32 @@
+{
+    "lists": [
+        {
+            "id": "1",
+            "title": "List 1"
+        },
+        {
+            "id": "2",
+            "title": "List 2"
+        }
+    ],
+    "items": [
+        {
+            "id": "1",
+            "name": "Item 1.1",
+            "checked": false,
+            "listId": "1"
+        },
+        {
+            "id": "2",
+            "name": "Item 1.2",
+            "checked": true,
+            "listId": "1"
+        },
+        {
+            "id": "3",
+            "name": "Item 2.1",
+            "checked": false,
+            "listId": "2"
+        }
+    ]
+}

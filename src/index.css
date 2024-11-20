@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial;
+}
+
+section {
+    margin-block: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+.list {
+    border: 0.15rem solid #000;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    width: 240px;
+    position: relative;
+}
+
+.delete-list {
+    position: absolute;
+    padding: 0.25rem;
+    right: 0;
+    top: 0;
+    line-height: 0.5;
+    font-size: 2rem;
+    color: orangered;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dashboard {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
