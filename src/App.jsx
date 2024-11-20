@@ -1,30 +1,27 @@
-import { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import List from './components/List';
-import ListForm from './components/ListForm';
 
 function App() {
-    const [lists, setLists] = useState([]);
-    window.lists = lists;
-
-    useEffect(() => {
-        fetch('http://localhost:3000/lists?_embed=items')
-            .then((response) => response.json())
-            .then((data) => {
-                setLists(data);
-            });
-    }, []);
+    let { lists } = useLoaderData();
+    lists = lists.map((list) => ({
+        ...list,
+        items: list.items.slice(0, 2),
+    }));
 
     return (
         <main>
             <h1>My Lists</h1>
-            <section>
-                <h2>Create a new list</h2>
-                <ListForm setListsFn={setLists} />
-            </section>
             <section className="dashboard">
-                {lists?.map((list, index) => (
-                    <List key={index} list={list} setListsFn={setLists} />
+                {lists?.map((list) => (
+                    <Link to={`/lists/${list.id}`} key={list.id}>
+                        <List previewList={list} preview={true} />
+                    </Link>
                 ))}
+                <div className="list new-list">
+                    <Link to={'/new'}>
+                        <button>+</button>
+                    </Link>
+                </div>
             </section>
         </main>
     );

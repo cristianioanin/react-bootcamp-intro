@@ -27,9 +27,23 @@ button:disabled {
     position: relative;
 }
 
+.list.new-list {
+    display: grid;
+    place-items: center;
+    height: 178.5px;
+
+    button {
+        border: none;
+        background: none;
+        font-size: 3rem;
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
 .delete-list {
     position: absolute;
-    padding: 0.25rem;
+    padding: 0.5rem;
     right: 0;
     top: 0;
     line-height: 0.5;
@@ -37,10 +51,23 @@ button:disabled {
     color: orangered;
     cursor: pointer;
     user-select: none;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 .dashboard {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.more-items {
+    font-weight: 600;
+}
+
+.list-preview:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: transform ease-out 200ms;
 }

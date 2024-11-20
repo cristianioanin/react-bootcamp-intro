@@ -9,6 +9,9 @@ import './index.css';
 import App from './App.jsx';
 import Error from './pages/Error.jsx';
 import Root from './pages/Root.jsx';
+import NewList from './pages/NewList.jsx';
+import List from './components/List.jsx';
+import { listLoader, rootLoader } from './server.js';
 
 const router = createBrowserRouter([
     {
@@ -17,12 +20,22 @@ const router = createBrowserRouter([
         errorElement: <Error />,
         children: [
             {
-                index: true,
+                path: '',
                 element: <Navigate to={'/home'} replace={true} />,
             },
             {
                 path: '/home',
+                loader: rootLoader,
                 element: <App />,
+            },
+            {
+                path: '/new',
+                element: <NewList />,
+            },
+            {
+                path: '/lists/:id',
+                loader: listLoader,
+                element: <List />,
             },
         ],
     },

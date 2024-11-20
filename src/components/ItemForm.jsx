@@ -1,4 +1,4 @@
-function ItemForm({ listId, setListsFn }) {
+function ItemForm({ listId, onNewItemAdded }) {
     const uuid = {
         form: window.crypto.randomUUID(),
         input: window.crypto.randomUUID(),
@@ -12,8 +12,6 @@ function ItemForm({ listId, setListsFn }) {
 
         form.reset();
 
-        // TODO: de adaugat validari
-
         fetch('http://localhost:3000/items', {
             method: 'POST',
             body: JSON.stringify({
@@ -26,20 +24,7 @@ function ItemForm({ listId, setListsFn }) {
             },
         })
             .then((response) => response.json())
-            .then((newItem) => {
-                setListsFn((currentState) => {
-                    return currentState.map((stateList) => {
-                        if (stateList.id === listId) {
-                            return {
-                                ...stateList,
-                                items: [...stateList.items, newItem],
-                            };
-                        }
-
-                        return stateList;
-                    });
-                });
-            });
+            .then((newItem) => onNewItemAdded(newItem));
     }
 
     return (
